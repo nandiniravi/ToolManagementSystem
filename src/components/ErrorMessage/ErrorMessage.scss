@@ -1,0 +1,15 @@
+@import '../style.scss';
+
+.error-message{
+    background-color: $alert-color;
+    color: #fff;
+    padding: 2%;
+    margin-top: 2%;
+    text-align: center;
+    border: 1px solid red;
+    border-radius: 10px;
+}
+
+.error-message i{
+    margin-right: 10px;
+}

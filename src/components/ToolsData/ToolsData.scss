@@ -1,0 +1,46 @@
+@import '../style.scss';
+
+.accordion{
+    display: block;
+    border: 1px solid $form-border-color;
+    margin: 3% 0% 0% 0%;
+}
+
+.accordion-item-close{
+    display: flex;
+    justify-content: space-between;
+    background-color: $primary-color;
+    padding: 1%;
+    color: $text-color;
+    outline: none;
+    border: 1px solid $text-color;
+    cursor: pointer;
+    transition: 0.9s;
+}
+
+.accordion-item-open{
+    display: flex;
+    justify-content: space-between;
+    background-color: $secondary-color;
+    padding: 1%;
+    color: $text-color;
+    outline: none;
+    border: 1px solid $text-color;
+    cursor: pointer;
+    transition: 0.9s;
+}
+
+.arrow{
+    font-size: 24px;
+    text-align: right;
+    margin-right: 16px;
+}
+
+.accordion-item-data{
+    display: block;
+    padding: 1%;
+    background-color: lemonchiffon;
+    color: $screen-text-color;
+    outline: none;
+    transition: 0.9s;
+}
