@@ -4,8 +4,6 @@ import data from '../constants';
 import {Link} from 'react-router-dom';
 import EditMasterdbPopup from '../EditMasterdbPopup/EditMasterdbPopup';
 
-
-
 const ToolMasterdb = (props) => {
     const [showEditPopup, setShowEditPopup] = useState(false);
     const [showDeletePopup, setShowDeletePopup] = useState(false);
@@ -32,19 +30,19 @@ const ToolMasterdb = (props) => {
     }
 
     return (
-        <div className='master-data'>
+        <div className='master-data table-responsive'>
             {showEditPopup 
                 ? <EditMasterdbPopup rowData={data.dummyData[0].data} onClickHandler={() => setShowEditPopup(false)}></EditMasterdbPopup>
                 : null}
             {showDeletePopup 
                 ? <DeletePopUp></DeletePopUp>
                 : null}
-            {props.admin 
+            {/* {props.admin 
                 ? <span>
                     <Link to='/toolsinshop' className='navigation'><i className="fa fa-chevron-left" style={{marginRight: "5px"}} ></i>Tools In Shop</Link>
                     <Link to='/reports' className='navigation'>Reports<i className="fa fa-chevron-right" style={{marginLeft: "5px"}} ></i></Link>
                     </span> 
-                : <Link to='/toolsrequesition' className='navigation'>Tools Requesition</Link>}
+                : <Link to='/toolsrequesition' className='navigation'>Tools Requesition</Link>} */}
             <table className="table table-striped">
                 <thead>
                 <tr>

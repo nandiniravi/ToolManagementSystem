@@ -1,7 +1,7 @@
 import './Header.scss'
 import {Link} from 'react-router-dom';
 
-let options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+let options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
 let currentDate = new Date();
 currentDate = currentDate.toLocaleString('en-GB', options);
 
@@ -17,7 +17,7 @@ const Header = () => {
     </div>
       <hr className='horizontal-line'/>
       <div className='header-date'>
-          <p>{currentDate} hrs<br/>
+          <p>{currentDate}<br/>
           Bangalore, India</p>
         </div>
     </div>

@@ -35,6 +35,10 @@ table {
     overflow-y: scroll;
 }
 
+// .table-striped > tbody > tr:nth-child(odd) > td{
+//     background-color: #fce4bb;
+//  }
+
 td{
     border: 1px solid $form-border-color;
     padding: 0.5%;
