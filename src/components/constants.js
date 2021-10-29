@@ -1,25 +1,13 @@
 const data = {
-    area: [
-        {areaId: 'Area 1'},
-        {areaId: 'Area 2'},
-        {areaId: 'Area 3'},
-        {areaId: 'Area 4'},
-        {areaId: 'Area 5'},
-        {areaId: 'Area 6'}
-    ],
-    subarea : [
-        {subAreaId: 'Subarea 1'},
-        {subAreaId: 'Subarea 2'},
-        {subAreaId: 'Subarea 3'},
-        {subAreaId: 'Subarea 4'},
-        {subAreaId: 'Subarea 5'},
-        {subAreaId: 'Subarea 6'}
-    ],
     indexPages : { 
         user : [
           {
             displayText : 'Tool Life Monitoring Details',
             link: '/toolsonshopfloor'
+          },
+          {
+            displayText : 'Alerts',
+            link: '/alerts'
           }
         ],
         admin: [ 
@@ -30,6 +18,10 @@ const data = {
           {
             displayText : 'Tools in Shop',
             link: '/toolsinshop'
+          },
+          {
+            displayText : 'Reports',
+            link: '/reports'
           }
         ]
     },
@@ -41,7 +33,7 @@ const data = {
             },
             {
                 header : "Tool Name",
-                value : "Drilling Machine"
+                value : "Drilling Bit"
             },
             {
                 header : "Description",
@@ -53,43 +45,43 @@ const data = {
             },
             {
                 header : "Tool Life",
-                value : "M123"
+                value : "50"
             },
             {
                 header : "Tool Life Unit",
-                value : "M123"
+                value : "jobs"
             },
             {
                 header : "Last Drawn Stock",
-                value : "M123"
+                value : "28-10-2021"
             },
             {
                 header : "Remaining units in Store",
-                value : "M123"
+                value : "20"
             },
-            {
-                header : "Locations",
-                value : "M123"
-            },
+            // {
+            //     header : "Locations",
+            //     value : "Workshop"
+            // },
             {
                 header : "Order Lead Time",
-                value : "M123"
+                value : "2 days"
             },
             {
                 header : "Supplier Name",
-                value : "M123"
+                value : "Bosch Tools"
             },
-            {
-                header : "Material",
-                value : "M123"
-            },
+            // {
+            //     header : "Material",
+            //     value : "xyz"
+            // },
             {
                 header : "Critical Parameter measure",
-                value : "M123"
+                value : "10"
             },
             {
                 header : "Critical Parameter measure unit",
-                value : "M123"
+                value : "cm"
             }]},
             {
                 data : [{
@@ -135,6 +127,48 @@ const data = {
                 {
                     header : "Remaining Stock",
                     value : "15"
+                }]
+            },
+            {
+                data : [{
+                    header : "Request Id",
+                    value : "1"
+                },
+                {
+                    header : "Tool Number",
+                    value : "TN1"
+                },
+                {
+                    header : "Drawn Date",
+                    value : "18-10-2021"
+                },
+                {
+                    header : "Disposed Date",
+                    value : "28-10-2021"
+                },
+                {
+                    header : "Disposed Reason",
+                    value : "Tool broken"
+                },
+                {
+                    header : "Tool Life",
+                    value : "25 jobs"
+                },
+                {
+                    header : "Machine Used",
+                    value : "M123"
+                },
+                {
+                    header : "Comments",
+                    value : "Tool broken"
+                },
+                {
+                    header : "Change in Operator ID",
+                    value : "S9050757"
+                },
+                {
+                    header : "Change out Operator ID",
+                    value : "S9050757"
                 }]
             }
     ],

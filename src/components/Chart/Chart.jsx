@@ -63,7 +63,7 @@ const data = {
     return(
         <div style={{textAlign: "center"}}>
             <div className='header'>
-                <h3 className='title'>{props.graphData}</h3>
+                <h3 className='title'>{props.graphData} - Monthly</h3>
             </div>
             <Bar data={data} options={options}/>
         </div>

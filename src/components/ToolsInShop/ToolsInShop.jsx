@@ -8,38 +8,42 @@ const ToolsInShop = (props) => {
             <table className="table table-striped">
                 <thead>
                 <tr>
-                    {data.dummyData[0].data.map( each => {
+                    {data.dummyData[2].data.map( each => {
                         return <td key={each.header}>{each.header}</td>
                     })}
                 </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        {data.dummyData[0].data.map( each => {
+                        {data.dummyData[2].data.map( each => {
                             return <td key={each.header}>{each.value}</td>
                         })}</tr>
                    <tr>
-                        {data.dummyData[0].data.map( each => {
+                        {data.dummyData[2].data.map( each => {
                             return <td key={each.header}>{each.value}</td>
                         })}</tr>
                     <tr>
-                        {data.dummyData[0].data.map( each => {
+                        {data.dummyData[2].data.map( each => {
                             return <td key={each.header}>{each.value}</td>
                         })}</tr>
                     <tr>
-                        {data.dummyData[0].data.map( each => {
+                        {data.dummyData[2].data.map( each => {
                             return <td key={each.header}>{each.value}</td>
                         })}</tr>
                     <tr>
-                        {data.dummyData[0].data.map( each => {
+                        {data.dummyData[2].data.map( each => {
                             return <td key={each.header}>{each.value}</td>
                         })}</tr>
-                        <tr>
-                        {data.dummyData[0].data.map( each => {
+                    <tr>
+                        {data.dummyData[2].data.map( each => {
                             return <td key={each.header}>{each.value}</td>
                         })}</tr>
-                        <tr>
-                        {data.dummyData[0].data.map( each => {
+                    <tr>
+                        {data.dummyData[2].data.map( each => {
+                            return <td key={each.header}>{each.value}</td>
+                        })}</tr>
+                    <tr>
+                        {data.dummyData[2].data.map( each => {
                             return <td key={each.header}>{each.value}</td>
                         })}</tr>
                 </tbody>
