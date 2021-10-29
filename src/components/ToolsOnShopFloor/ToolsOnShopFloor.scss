@@ -1,17 +1,17 @@
 @import '../style.scss';
 
-.inshop-data{
+.tools-shopfloor{
     padding: 2% 0% 1% 0%;
 }
 
-.inshop-data span{
+.tools-shopfloor span{
     margin: 0% 0% 1% 1%;
     
 }
 
 .navigation{
     display: inline-block;
-    width: 250px;
+    width: 150px;
     margin: 0% 3% 0% 0%;
     padding: 1%;
     color: $tertiary-color;
@@ -35,6 +35,15 @@ table {
     overflow-y: scroll;
 }
 
+h2{
+    font-family: 'Barlow Condensed', sans-serif;
+    color: #222;
+}
+
+// .table-striped > tbody > tr:nth-child(odd) > td{
+//     background-color: #fce4bb;
+//  }
+
 td{
     border: 1px solid $form-border-color;
     padding: 0.5%;
@@ -49,14 +58,21 @@ thead tr{
     color: $text-color;
 }
 
-h2{
-    font-family: 'Barlow Condensed', sans-serif;
-    color: #222;
-}
-
-
 .icon{
     margin: 10px;
     font-size: 1.1rem;
     cursor: pointer;
+}
+
+@import '../style.scss';
+
+.tools-shopfloor button{
+    border: 1px solid #fff;
+    background-color: $tertiary-color;
+    color: $text-color;
+}
+
+.request-btn{
+    padding: 10px;
+    margin-left: 10px;
 }

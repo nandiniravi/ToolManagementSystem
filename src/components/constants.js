@@ -19,7 +19,7 @@ const data = {
         user : [
           {
             displayText : 'Tool Life Monitoring Details',
-            link: '/toollifemonitoring'
+            link: '/toolsonshopfloor'
           }
         ],
         admin: [ 
@@ -90,10 +90,53 @@ const data = {
             {
                 header : "Critical Parameter measure unit",
                 value : "M123"
+            }]},
+            {
+                data : [{
+                    header : "SNo.",
+                    value : "1"
+                },
+                {
+                    header : "Tool Number",
+                    value : "TN1"
+                },
+                {
+                    header : "Tool Name",
+                    value : "Drilling Machine"
+                },
+                {
+                    header : "Machine",
+                    value : "M123"
+                },
+                {
+                    header : "Workshop",
+                    value : "Workshop 1"
+                },
+                {
+                    header : "Changed On",
+                    value : "29-OCt-2021"
+                },
+                {
+                    header : "Changed By",
+                    value : "S9050757"
+                },
+                {
+                    header : "Pieces Worked upon",
+                    value : "25"
+                },
+                {
+                    header : "Expected Remaining Life",
+                    value : "40"
+                },
+                {
+                    header : "Expected Change Date",
+                    value : "29-Nov-2021"
+                },
+                {
+                    header : "Remaining Stock",
+                    value : "15"
+                }]
             }
-        ]
-        }
-
     ]
 } 
 

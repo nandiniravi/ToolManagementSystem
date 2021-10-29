@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './EditMasterdbPopup.scss';
 
 const EditMasterdbPopup = (props) => {
-    const [toolDetails, setToolDetails] = useState('');
+    //const [toolDetails, setToolDetails] = useState('');
 
     const saveChanges = (event) => {
         event.preventDefault();

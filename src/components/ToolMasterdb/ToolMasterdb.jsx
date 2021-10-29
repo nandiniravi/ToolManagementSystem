@@ -1,7 +1,6 @@
 import {useState} from 'react';
 import './ToolMasterdb.scss';
 import data from '../constants';
-import {Link} from 'react-router-dom';
 import EditMasterdbPopup from '../EditMasterdbPopup/EditMasterdbPopup';
 
 const ToolMasterdb = (props) => {
@@ -37,12 +36,7 @@ const ToolMasterdb = (props) => {
             {showDeletePopup 
                 ? <DeletePopUp></DeletePopUp>
                 : null}
-            {/* {props.admin 
-                ? <span>
-                    <Link to='/toolsinshop' className='navigation'><i className="fa fa-chevron-left" style={{marginRight: "5px"}} ></i>Tools In Shop</Link>
-                    <Link to='/reports' className='navigation'>Reports<i className="fa fa-chevron-right" style={{marginLeft: "5px"}} ></i></Link>
-                    </span> 
-                : <Link to='/toolsrequesition' className='navigation'>Tools Requesition</Link>} */}
+            <h2 style={{textAlign: "center"}}>Tools Master Data</h2>
             <table className="table table-striped">
                 <thead>
                 <tr>

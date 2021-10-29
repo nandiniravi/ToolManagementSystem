@@ -1,0 +1,42 @@
+@import '../style.scss';
+
+.changetool-popup{
+    position: absolute;
+    top: 30%;
+    left: 15%;
+    width: 70%;
+    padding: 2.5%;
+    z-index: 2;
+    text-align: center;
+    border: 2px solid $primary-color;
+    border-radius: 20px;
+    background-color: $text-color;
+    font-size: 0.9rem;
+}
+
+.changetool-popup form{
+    display: flexbox;
+    flex-direction: row;
+}
+
+.changetool-popup form input{
+    width: 40%;  
+    margin: 1% 1% 1% 1%;
+    padding: 8px;
+    border: 1px solid $form-border-color;
+    border-radius: 10px;
+    outline: none;
+    color: $screen-text-color;
+    font-size: small;
+}
+
+.changetool-popup button{
+    width: 15%;
+    padding: 0.8%;
+    margin: 0.5% 1% 0% 1%;
+    border: 1px solid $form-border-color;
+    border-radius: 10px;
+    background-color: $primary-color;
+    color: $text-color;
+    outline: none;
+}

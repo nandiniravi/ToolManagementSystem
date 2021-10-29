@@ -1,16 +1,10 @@
 import './ToolsInShop.scss';
 import data from '../constants';
-import {Link} from 'react-router-dom';
 
 const ToolsInShop = (props) => {
     return (
         <div className='inshop-data table-responsive'>
-            {/* {props.admin 
-                ? <span>
-                    <Link to='/tooldatabase' className='navigation'><i className="fa fa-chevron-left" style={{marginRight: "5px"}} ></i>Tool Database</Link>
-                    <Link to='/reports' className='navigation'>Reports<i className="fa fa-chevron-right" style={{marginLeft: "5px"}} ></i></Link>
-                    </span> 
-                : <Link to='/toolsrequesition' className='navigation'>Tools Requesition</Link>} */}
+            <h2 style={{textAlign: "center"}}>Tools In Shop</h2>
             <table className="table table-striped">
                 <thead>
                 <tr>
