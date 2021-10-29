@@ -21,7 +21,7 @@ const App = () => {
         <Footer></Footer>
       </Route>
       <Route exact path='/index'>
-        <IndexPage admin={false}></IndexPage>
+        <IndexPage admin={true}></IndexPage>
       </Route>
       <Route exact path='/tooldatabase'>
         <NavBar isAdmin={true}></NavBar>

@@ -137,6 +137,32 @@ const data = {
                     value : "15"
                 }]
             }
+    ],
+    toolLifeData : [{
+        toolName: 'Tool A',
+        avgLife : 25
+    },
+    {toolName: 'Tool B',
+    avgLife : 30},
+    {toolName: 'Tool C',
+    avgLife : 33},
+    {toolName: 'Tool D',
+    avgLife : 40},
+    {toolName: 'Tool E',
+    avgLife : 42}
+    ],
+    toolOrderHistory : [{
+        toolName: 'Tool A',
+        noOfOrders : 150
+    },
+    {toolName: 'Tool B',
+    noOfOrders : 80},
+    {toolName: 'Tool C',
+    noOfOrders : 133},
+    {toolName: 'Tool D',
+    noOfOrders : 140},
+    {toolName: 'Tool E',
+    noOfOrders : 62}
     ]
 } 
 

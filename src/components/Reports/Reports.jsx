@@ -1,8 +1,10 @@
-//import {Link} from 'react-router-dom';
+import Chart from '../Chart/Chart';
 
 const Reports = (props) => {
     return (
-        <div className='inshop-data'>
+        <div className='reports'>
+            <Chart graphData='Avg Tool Life'></Chart>
+            <Chart graphData='Tool Order History'></Chart>
         </div>
     )
 };
