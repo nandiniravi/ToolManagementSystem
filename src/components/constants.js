@@ -106,7 +106,7 @@ const data = {
                 },
                 {
                     header : "Changed On",
-                    value : "29-OCt-2021"
+                    value : "29-OCT-2021"
                 },
                 {
                     header : "Changed By",
