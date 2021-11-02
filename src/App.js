@@ -9,19 +9,27 @@ import ToolsInShop  from './components/ToolsInShop/ToolsInShop';
 import Reports from './components/Reports/Reports';
 import NavBar from './components/NavBar/NavBar';
 import ToolsOnShopFloor from './components/ToolsOnShopFloor/ToolsOnShopFloor';
+import { useState } from 'react';
 
 const App = () => {
+  const [userName, setUserName] = useState('');
+  const [isAdmin, setIsAdmin] = useState('');
+
+  const getUserDetails = (userDetails) => {
+    setUserName(userDetails.userName);
+    setIsAdmin(userDetails.isAdmin);
+  }
 
   return (
     <BrowserRouter>
     <div className="container-fluid App">
       <Header></Header>
       <Route exact path='/home'>
-        <LoginForm></LoginForm>
+        <LoginForm getUserDetailsHandler={(userDetails) => getUserDetails(userDetails)}></LoginForm>
         <Footer></Footer>
       </Route>
-      <Route exact path='/index'>
-        <IndexPage admin={true}></IndexPage>
+      <Route path='/index'>
+        <IndexPage admin={isAdmin} userName={userName}></IndexPage>
       </Route>
       <Route exact path='/tooldatabase'>
         <NavBar isAdmin={true}></NavBar>

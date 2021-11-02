@@ -1,15 +1,73 @@
-import {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './ToolMasterdb.scss';
-import data from '../constants';
+import Loader from '../Loader/Loader';
 import EditMasterdbPopup from '../EditMasterdbPopup/EditMasterdbPopup';
 
 const ToolMasterdb = (props) => {
     const [showEditPopup, setShowEditPopup] = useState(false);
     const [showDeletePopup, setShowDeletePopup] = useState(false);
+    const [data, setData] = useState();
+    const [showLoader, setShowLoader] = useState(false);
+    const [deleteToolId, setDeleteToolId] = useState('');
+    let keys = [
+        'ToolNumber', 'ToolName', 'ToolDescription', 'ToolLife', 'LastDrawnStock', 'RemainingStock', 'OrderLeadTime', 'CriticalParameterMeasure', 'CriticalParameterMeasureUnit'
+    ];
 
-    const deleteDataFromDB = (event) => {
+    const [editRowData, setEditRowData] = useState();
+
+    useEffect(() => {
+        setShowLoader(true);
+        async function fetchData(){
+            const response = await fetch('https://ddp8ypl7va.execute-api.ap-south-1.amazonaws.com/DEV/Tms/GetAllTools',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                const json = await response.json();
+                // console.log(json.data);
+                if(json.ResponseCode === 0 && json.data.length > 0){
+                    setShowLoader(false);
+                    setData(json.data);
+                }
+                else{
+                    setShowLoader(false);
+                    throw new Error('No data found');
+                }
+            };
+            fetchData();
+        },[]);
+
+    const editPopUp = (toolId) => {
+        setShowEditPopup(true);
+        const editRow = data.filter(each => each.id === toolId);
+        setEditRowData(editRow);
+    };
+
+    const deletePopUp = (toolId) => {
+        setShowDeletePopup(true);
+        setDeleteToolId(toolId);
+    }
+
+    const deleteDataFromDB = async (event) => {
         event.preventDefault();
-        console.log('call DELETE API and send details');
+        setShowLoader(true);
+        const response = await fetch('',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({toolId : deleteToolId})
+        });
+        const json = response.json();
+        if(json.ResponseCode === 0){
+            console.log('Deletion successful!');
+        }
+        else{
+            throw new Error('Something went wrong');
+        }
+        setShowLoader(false);
         setShowDeletePopup(false);
     }
 
@@ -28,10 +86,11 @@ const ToolMasterdb = (props) => {
         );
     }
 
-    return (
-        <div className='master-data table-responsive'>
+    const tableData = () => {
+        return(
+            <div className='master-data table-responsive'>
             {showEditPopup 
-                ? <EditMasterdbPopup rowData={data.dummyData[0].data} onClickHandler={() => setShowEditPopup(false)}></EditMasterdbPopup>
+                ? <EditMasterdbPopup rowData={editRowData} onClickHandler={() => setShowEditPopup(false)}></EditMasterdbPopup>
                 : null}
             {showDeletePopup 
                 ? <DeletePopUp></DeletePopUp>
@@ -41,58 +100,44 @@ const ToolMasterdb = (props) => {
                 <thead>
                 <tr>
                     <td>Edit/Delete</td>
-                    {data.dummyData[0].data.map( each => {
-                        return <td key={each.header}>{each.header}</td>
+                    {keys.map( each => {
+                        return <td key={each}>{each}</td>
                     })}
                 </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><i className="fa fa-edit icon" onClick={() => setShowEditPopup(true)}></i>
-                        <i className="fa fa-trash-o icon" onClick={() => setShowDeletePopup(true)}></i></td>
-                        {data.dummyData[0].data.map( each => {
-                            return <td key={each.header}>{each.value}</td>
-                        })}</tr>
-                   <tr>
-                        <td><i className="fa fa-edit icon"></i>
-                        <i className="fa fa-trash-o icon"></i></td>
-                        {data.dummyData[0].data.map( each => {
-                            return <td key={each.header}>{each.value}</td>
-                        })}</tr>
-                    <tr>
-                        <td><i className="fa fa-edit icon"></i>
-                        <i className="fa fa-trash-o icon"></i></td>
-                        {data.dummyData[0].data.map( each => {
-                            return <td key={each.header}>{each.value}</td>
-                        })}</tr>
-                    <tr>
-                        <td><i className="fa fa-edit icon"></i>
-                        <i className="fa fa-trash-o icon"></i></td>
-                        {data.dummyData[0].data.map( each => {
-                            return <td key={each.header}>{each.value}</td>
-                        })}</tr>
-                    <tr>
-                        <td><i className="fa fa-edit icon"></i>
-                        <i className="fa fa-trash-o icon"></i></td>
-                        {data.dummyData[0].data.map( each => {
-                            return <td key={each.header}>{each.value}</td>
-                        })}</tr>
-                        <tr>
-                        <td><i className="fa fa-edit icon"></i>
-                        <i className="fa fa-trash-o icon"></i></td>
-                        {data.dummyData[0].data.map( each => {
-                            return <td key={each.header}>{each.value}</td>
-                        })}</tr>
-                        <tr>
-                        <td><i className="fa fa-edit icon"></i>
-                        <i className="fa fa-trash-o icon"></i></td>
-                        {data.dummyData[0].data.map( each => {
-                            return <td key={each.header}>{each.value}</td>
-                        })}</tr>
+                    {data.map(each => {
+                        // console.log(each);
+                        return(
+                            <tr key={each.toolNumber}>
+                                <td><i className="fa fa-edit icon" onClick={() => editPopUp(each.id)}></i>
+                                <i className="fa fa-trash-o icon" onClick={() => deletePopUp(each.id)}></i></td>
+                                <td>{each.toolNumber}</td>
+                                <td>{each.toolName}</td>
+                                <td>{each.toolDescription}</td>
+                                <td>{each.toolLife} Output Units</td>
+                                <td>{each.lastDrawnStock}</td>
+                                <td>{each.remStock}</td>
+                                <td>{each.orderLeadTime}</td>
+                                <td>{each.criticalParameterMeasure}</td>
+                                <td>{each.criticalParameterMeasureUnit}</td>
+                            </tr>
+                        );
+                    })}
                 </tbody>
             </table>
         </div>
+        );
+    };
+    
+    return (
+        <React.Fragment>
+        {data ? tableData() : null}
+        {showLoader 
+            ? <Loader></Loader>
+            : null}
+        </React.Fragment>
     );
-}
+};
 
 export default ToolMasterdb;

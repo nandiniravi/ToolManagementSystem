@@ -1,28 +1,82 @@
 import React from 'react';
-import {Redirect} from 'react-router-dom';
+import {Redirect, useHistory} from 'react-router-dom';
 import './LoginForm.scss';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import Loader from '../Loader/Loader';
 
-const LoginForm = () => {
+// export const UserContext = React.createContext();
+
+const LoginForm = (props) => {
     const [userId, setUserId] = useState('');
     const [password, setPassword] = useState('');
     const [userAuthenticated, setUserAuthenticated] = useState('');
     const [showLoader, setShowLoader] = useState(false);
+    const [userNameFromRes, setUserNameFromRes] = useState('');
+    const [isAdmin, setIsAdmin] = useState(false);
+    const [showErrorMsg, setShowErrorMsg] = useState(false);
+    const [sendRequest, setSendRequest] = useState(false);
+    const history = useHistory();
+    
 
-    const submitForm = (event) => {
+    useEffect(() => {
+        async function fetchData(){
+        if(sendRequest){
+            const data = {
+                userID: userId,
+                password: password
+            };
+        
+            const response = await fetch('https://ddp8ypl7va.execute-api.ap-south-1.amazonaws.com/DEV/Tms/Login',{
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+            const resObj = await response.json();
+            console.log(resObj.data);
+
+            if(resObj.ResponseCode === 0){
+                setUserAuthenticated(true);
+                setUserNameFromRes(resObj.data['name']);
+                setIsAdmin(resObj.data['isadmin']);
+                localStorage.setItem("userId", userId);
+                localStorage.setItem("isAdmin", resObj.data['isadmin']);
+                localStorage.setItem("userName", resObj.data['name']);
+                props.getUserDetailsHandler({
+                    userName: resObj.data['name'],
+                    isAdmin: resObj.data['isadmin']
+                });
+            }
+            else{
+                setUserAuthenticated(false);
+                setShowErrorMsg(true);
+            }
+                
+            setShowLoader(false);
+            setUserId('');
+            setPassword('');
+            setSendRequest(false);
+            }
+        }
+        fetchData();
+        }, [sendRequest, userId, password]);
+
+    const submitForm = async (event) => {
         event.preventDefault();
         setShowLoader(true);
-        console.log(userId);
-        console.log(password);
-        setShowLoader(false);
-        setUserAuthenticated(true);
-        setUserId('');
-        setPassword('');
+        localStorage.clear();
+        setSendRequest(true);       
+    }
+
+    const navigateToIndexPage = () => {
+        history.push('/index');
+        
     }
 
     return (
+        // <UserContext.Provider value={{userName: userNameFromRes, isAdmin: isAdmin}}>
         userAuthenticated 
         ? <Redirect to='/index'/>
         : <div className='login-form'>
@@ -41,9 +95,10 @@ const LoginForm = () => {
                     onChange={(event) => setPassword(event.target.value)}/><br/><br/><br/>
                     <button onClick={(event) => submitForm(event)}>Login</button>
                 </form>
-                {userAuthenticated === false ? <ErrorMessage></ErrorMessage> : null}
+                {showErrorMsg ? <ErrorMessage></ErrorMessage> : null}
             </div>
         </div>
+        // </UserContext.Provider>
     );
 }
 

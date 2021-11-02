@@ -1,12 +1,12 @@
 import './IndexPage.scss';
 import data from '../constants';
 import {Link} from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
-const IndexPage = (props) => {
-    console.log(props.pages)
+const IndexPage = (props) => {    
     return (
         <div className='index-page'>
-            <p>Hello John Doe,</p>
+            <p>Hello {props.userName},</p>
             {props.admin 
                 ? data.indexPages.admin.map(each => {
                     return <Link to={each.link} key={each.displayText}><div className='card'>{each.displayText}</div></Link>
