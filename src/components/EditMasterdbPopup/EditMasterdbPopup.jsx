@@ -35,9 +35,10 @@ const EditMasterdbPopup = (props) => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(updatedToolDetails)
+            body: JSON.stringify({toolData:updatedToolDetails})
         });
-        const json = response.json();
+        const json = await response.json();
+        console.log(json)
         if(json.ResponseCode === 0){
             console.log('Changes saved successfully');
         }

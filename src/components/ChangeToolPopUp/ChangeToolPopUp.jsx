@@ -4,9 +4,23 @@ import './ChangeToolPopUp.scss';
 const ChangeToolPopUp = (props) => {
     //const [toolDetails, setToolDetails] = useState('');
 
-    const saveChanges = (event) => {
+    const saveChanges = async (event) => {
         event.preventDefault();
-        console.log('send updates to db');
+        const response = await fetch('https://ddp8ypl7va.execute-api.ap-south-1.amazonaws.com/DEV/Tms/ChangeTool',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify()
+        });
+        const json = await response.json();
+        console.log(json)
+        if(json.ResponseCode === 0){
+            console.log('Changes saved successfully');
+        }
+        else{
+            throw new Error('Changes not saved!');
+        }    
         props.onClickHandler();
     }
 

@@ -1,55 +1,84 @@
+import React, {useState, useEffect} from 'react';
 import './ToolsInShop.scss';
-import data from '../constants';
+import Loader from '../Loader/Loader';
+import moment from 'moment';
 
 const ToolsInShop = (props) => {
-    return (
-        <div className='inshop-data table-responsive'>
+    const [data, setData] = useState();
+    const [showLoader, setShowLoader] = useState(false);
+    let keys = ['Request Id', 'Tool Number', 'Drawn Date', 'Disposed Date', 
+    'Disposed Reason', 'Tool Life (days)', 'Machine Used', 'Comments', 'Change in Operator ID', 'Change out Operator ID'];
+
+    const [editRowData, setEditRowData] = useState();
+
+    useEffect(() => {
+        setShowLoader(true);
+        async function fetchData(){
+            const response = await fetch('https://ddp8ypl7va.execute-api.ap-south-1.amazonaws.com/DEV/Tms/GetChanges',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                const json = await response.json();
+                // console.log(json.data);
+                if(json.ResponseCode === 0 && json.data.length > 0){
+                    setShowLoader(false);
+                    setData(json.data);
+                }
+                else{
+                    setShowLoader(false);
+                    throw new Error('No data found');
+                }
+            };
+            fetchData();
+        },[]);
+
+    const tableData = () => {
+        return(
+            <div className='master-data table-responsive'>
             <h2 style={{textAlign: "center"}}>Tools In Shop</h2>
             <table className="table table-striped">
                 <thead>
                 <tr>
-                    {data.dummyData[2].data.map( each => {
-                        return <td key={each.header}>{each.header}</td>
+                    {keys.map( each => {
+                        return <td key={each}>{each}</td>
                     })}
                 </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        {data.dummyData[2].data.map( each => {
-                            return <td key={each.header}>{each.value}</td>
-                        })}</tr>
-                   <tr>
-                        {data.dummyData[2].data.map( each => {
-                            return <td key={each.header}>{each.value}</td>
-                        })}</tr>
-                    <tr>
-                        {data.dummyData[2].data.map( each => {
-                            return <td key={each.header}>{each.value}</td>
-                        })}</tr>
-                    <tr>
-                        {data.dummyData[2].data.map( each => {
-                            return <td key={each.header}>{each.value}</td>
-                        })}</tr>
-                    <tr>
-                        {data.dummyData[2].data.map( each => {
-                            return <td key={each.header}>{each.value}</td>
-                        })}</tr>
-                    <tr>
-                        {data.dummyData[2].data.map( each => {
-                            return <td key={each.header}>{each.value}</td>
-                        })}</tr>
-                    <tr>
-                        {data.dummyData[2].data.map( each => {
-                            return <td key={each.header}>{each.value}</td>
-                        })}</tr>
-                    <tr>
-                        {data.dummyData[2].data.map( each => {
-                            return <td key={each.header}>{each.value}</td>
-                        })}</tr>
+                    {data.map((each,index) => {
+                        // console.log(each);
+                        return(
+                            <tr key={each.toolNumber}>
+                                <td>{index + 1}</td>
+                                <td>{each.toolNumber}</td>
+                                <td>{moment(each.drawnDate).format('DD-MM-YYYY')}</td>
+                                <td>{moment(each.disposedDate).format('DD-MM-YYYY')}</td>
+                                <td>{each.reason}</td>
+                                <td>{each.toolLife}</td>
+                                <td>{each.machineUsed}</td>
+                                <td>{each.comments}</td>
+                                <td>{each.changeInOperator}</td>
+                                <td>{each.changeOutOperator}</td>
+                            </tr>
+                        );
+                    })}
                 </tbody>
             </table>
         </div>
+        );
+    };
+    
+    return (
+        <React.Fragment>
+        {data ? tableData() : null}
+        {showLoader 
+            ? <Loader></Loader>
+            : null}
+        </React.Fragment>
     );
-}
+};
 
 export default ToolsInShop;

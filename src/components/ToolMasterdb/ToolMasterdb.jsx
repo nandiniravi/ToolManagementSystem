@@ -53,14 +53,14 @@ const ToolMasterdb = (props) => {
     const deleteDataFromDB = async (event) => {
         event.preventDefault();
         setShowLoader(true);
-        const response = await fetch('',{
+        const response = await fetch('https://ddp8ypl7va.execute-api.ap-south-1.amazonaws.com/DEV/Tms/DeleteTool',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({toolId : deleteToolId})
         });
-        const json = response.json();
+        const json = await response.json();
         if(json.ResponseCode === 0){
             console.log('Deletion successful!');
         }
