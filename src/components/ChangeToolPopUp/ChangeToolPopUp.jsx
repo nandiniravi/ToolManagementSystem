@@ -2,7 +2,11 @@ import { useState } from 'react';
 import './ChangeToolPopUp.scss';
 
 const ChangeToolPopUp = (props) => {
-    //const [toolDetails, setToolDetails] = useState('');
+    const toolDetails = props.toolDetails[0];
+    console.log(toolDetails);
+
+    const [toolNumber, setToolNumber] = useState(toolDetails.tool_number);
+    const [machineName, setMachineName] = useState(toolDetails.machine_name);
 
     const saveChanges = async (event) => {
         event.preventDefault();
@@ -33,9 +37,12 @@ const ChangeToolPopUp = (props) => {
     const changePopUpForm = () => {
         return (
             <form>
-                <input type='text' placeholder='Machine'/><br/>
-                <input type='text' placeholder='Tool Number'/><br/>
-                <input type='text' placeholder='Tool Name'/><br/>
+                <input type='text' 
+                value={toolNumber}
+                onChange={(event) => setToolNumber(event.target.value)}/><br/>
+                <input type='text' 
+                value={machineName}
+                 onChange={(event) => setMachineName(event.target.value)}/><br/>
                 <button onClick={(event) => saveChanges(event)}>Save</button>
                 <button onClick={(event) => cancelChanges(event)}>Cancel</button>
             </form>
