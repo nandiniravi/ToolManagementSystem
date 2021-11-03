@@ -59,52 +59,69 @@ const EditMasterdbPopup = (props) => {
         <div className='edit-popup'>
             <p>Tool details:</p>
             <form>
-                <div><text>Tool Number (Read-only):</text>
-                <input type='text' 
-                value={toolDetails.toolNumber} readOnly/></div>
-
-                <div><text>Tool Name (Read-only):</text>
+                <div>
+                    <label>Tool Number:</label>
                     <input type='text' 
-                    value={toolDetails.toolName} readOnly/></div>
+                    value={toolNumber}
+                    onChange={event => setToolNumber(event.target.value)}/>
+                </div>
+
+                <div>
+                    <label>Tool Name:</label>
+                    <input type='text' 
+                    value={toolName}
+                    onChange={event => setToolName(event.target.value)}/>
+                </div>
                     
-                    <div><text>Tool Description:</text>
+                <div>
+                    <label>Tool Description:</label>
                     <input type='text' 
                     value={toolDescription}
-                    onChange={event => setToolDescription(event.target.value)}/></div>
+                    onChange={event => setToolDescription(event.target.value)}/>
+                </div>
 
-                <div><text>Tool Life in output units:</text>
+                <div>
+                    <label>Tool Life in output units:</label>
                     <input type='Number' 
                     min = '1'
                     value={toolLife}
-                    onChange={event => setToolLife(event.target.value)}/></div>
+                    onChange={event => setToolLife(event.target.value)}/>
+                </div>
 
-                <div><text>Last Drawn Stock:</text>
+                <div><label>Last Drawn Stock:</label>
                     <input type='Number' 
                     min = '1'
                     value={lastDrawnStock}
-                    onChange={event => setLastDrawnStock(event.target.value)}/></div>
+                    onChange={event => setLastDrawnStock(event.target.value)}/>
+                </div>
 
-                <div><text>Remaining Stock:</text>
+                <div><label>Remaining Stock:</label>
                     <input type='Number' 
                     min = '1'
                     value={remStock}
-                    onChange={event => setRemStock(event.target.value)}/></div>
+                    onChange={event => setRemStock(event.target.value)}/>
+                </div>
 
-                <div><text>Order Lead Time:</text>
+                <div>
+                    <label>Order Lead Time:</label>
                     <input type='Number' 
                     min='1'
                     value={orderLeadTime}
-                    onChange={event => setOrderLeadTime(event.target.value)}/></div>
+                    onChange={event => setOrderLeadTime(event.target.value)}/>
+                </div>
 
-                <div><text>Critical Parameter Measure:</text>
+                <div>
+                    <label>Critical Parameter Measure:</label>
                     <input type='text' 
                     value={criticalParameterMeasure}
-                    onChange={event => setCriticalParameterMeasure(event.target.value)}/></div>
+                    onChange={event => setCriticalParameterMeasure(event.target.value)}/>
+                </div>
 
-                <div><text>Critical Parameter Unit:</text>        
+                <div><label>Critical Parameter Unit:</label>        
                     <input type='text' 
                     value={criticalParameterMeasureUnit}
-                    onChange={event => setCriticalParameterMeasureUnit(event.target.value)}/></div>
+                    onChange={event => setCriticalParameterMeasureUnit(event.target.value)}/>
+                </div>
                                 
                 <button onClick={(event) => saveChanges(event)}>Save</button>
                 <button onClick={(event) => cancelChanges(event)}>Cancel</button>

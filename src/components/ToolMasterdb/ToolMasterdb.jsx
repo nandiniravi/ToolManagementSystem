@@ -39,9 +39,27 @@ const ToolMasterdb = (props) => {
             fetchData();
         },[]);
 
+    const addNewToolPopUp = () => {
+        setShowEditPopup(true);
+        let editRow = [];
+        editRow.push({
+            toolNumber: '',
+            toolName: '',
+            toolDescription: '',
+            toolLife: '',
+            toolLifeUnit: 'Output Units',
+            lastDrawnStock: '',
+            remStock: '',
+            orderLeadTime: '',
+            criticalParameterMeasure: '',
+            criticalParameterMeasureUnit: ''
+        });
+        setEditRowData(editRow);
+    }
+
     const editPopUp = (toolId) => {
         setShowEditPopup(true);
-        const editRow = data.filter(each => each.id === toolId);
+        const editRow = data.filter(each => each.id === toolId);        
         setEditRowData(editRow);
     };
 
@@ -96,7 +114,7 @@ const ToolMasterdb = (props) => {
                 ? <DeletePopUp></DeletePopUp>
                 : null}
             <h2 style={{textAlign: "center"}}>Tools Master Data</h2>
-            <button className='add-row'>Add New Tool  <i className="fa fa-plus-circle"></i></button>
+            <button className='add-row' onClick={() => addNewToolPopUp()}>Add New Tool  <i className="fa fa-plus-circle"></i></button>
             <table className="table table-striped">
                 <thead>
                 <tr>
