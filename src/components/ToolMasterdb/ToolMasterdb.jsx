@@ -6,7 +6,7 @@ import EditMasterdbPopup from '../EditMasterdbPopup/EditMasterdbPopup';
 const ToolMasterdb = (props) => {
     const [showEditPopup, setShowEditPopup] = useState(false);
     const [showDeletePopup, setShowDeletePopup] = useState(false);
-    const [data, setData] = useState();
+    const [data, setData] = useState('');
     const [showLoader, setShowLoader] = useState(false);
     const [deleteToolId, setDeleteToolId] = useState('');
     let keys = [
@@ -37,7 +37,7 @@ const ToolMasterdb = (props) => {
                 }
             };
             fetchData();
-        },[]);
+        },[showEditPopup,showDeletePopup,deleteToolId]);
 
     const addNewToolPopUp = () => {
         setShowEditPopup(true);
