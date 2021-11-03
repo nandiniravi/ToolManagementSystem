@@ -10,7 +10,6 @@ const ToolsOnShopFloor = (props) => {
     const [showLoader, setShowLoader] = useState(false);
     const [changeToolDetails, setChangeToolDetails] = useState('');
     const [showChangeToolPopup, setChangeToolPopup] = useState(false);
-    const [showToolReqPopup, setShowToolReqPopup] = useState(false);
     let keys = ['Change Tool','S No.','Tool Number', 'Machine Name', 'Changed On', 
     'Changed By', 'Units Worked Upon', 'Remaining Tool Life', 'Remaining Stock'];
 
@@ -44,13 +43,13 @@ const ToolsOnShopFloor = (props) => {
                 }
             };
             fetchData();
-        },[showChangeToolPopup, showToolReqPopup]);
+        },[showChangeToolPopup]);
 
     const tableData = () => {
         return(
             <div className='tools-shopfloor table-responsive'>
             { showChangeToolPopup 
-            ? <ChangeToolPopUp toolDetails={changeToolDetails}></ChangeToolPopUp>
+            ? <ChangeToolPopUp toolDetails={changeToolDetails} changeTool={true} onClickHandler={() => setChangeToolPopup(false)}></ChangeToolPopUp>
             : null}
             <h2 style={{textAlign: "center"}}>Tools In Shop</h2>
             <table className="table table-striped">

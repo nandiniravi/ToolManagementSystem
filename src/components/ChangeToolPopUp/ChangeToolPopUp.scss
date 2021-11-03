@@ -3,8 +3,8 @@
 .changetool-popup{
     position: absolute;
     top: 30%;
-    left: 15%;
-    width: 70%;
+    left: 25%;
+    width: 50%;
     padding: 2.5%;
     z-index: 2;
     text-align: center;
@@ -15,11 +15,17 @@
 }
 
 .changetool-popup form{
-    display: flexbox;
-    flex-direction: row;
+    text-align: left;
 }
 
-.changetool-popup form input{
+.changetool-popup div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    vertical-align: middle;
+}
+
+.changetool-popup form input, select, textarea{
     width: 40%;  
     margin: 1% 1% 1% 1%;
     padding: 8px;
