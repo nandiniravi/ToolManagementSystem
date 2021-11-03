@@ -87,3 +87,11 @@ thead tr{
     color: $text-color;
     outline: none;
 }
+
+.add-row{
+    margin: 1% 0% 0% 1%;
+    border: 1px solid #fff;
+    background-color: $tertiary-color;
+    color: $text-color;
+    padding: 8px;
+}

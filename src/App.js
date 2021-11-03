@@ -12,8 +12,8 @@ import ToolsOnShopFloor from './components/ToolsOnShopFloor/ToolsOnShopFloor';
 import { useState } from 'react';
 
 const App = () => {
-  const [userName, setUserName] = useState('');
-  const [isAdmin, setIsAdmin] = useState('');
+  const [userName, setUserName] = useState(localStorage.getItem('userName'));
+  const [isAdmin, setIsAdmin] = useState(localStorage.getItem('isAdmin'));
 
   const getUserDetails = (userDetails) => {
     setUserName(userDetails.userName);
@@ -32,19 +32,24 @@ const App = () => {
         <IndexPage admin={isAdmin} userName={userName}></IndexPage>
       </Route>
       <Route exact path='/tooldatabase'>
-        <NavBar isAdmin={true}></NavBar>
+        <NavBar isAdmin={isAdmin}></NavBar>
         <ToolMasterdb admin={true}></ToolMasterdb>
       </Route>
       <Route exact path='/toolsinshop'>
-        <NavBar isAdmin={true}></NavBar>
+        <NavBar isAdmin={isAdmin}></NavBar>
         <ToolsInShop admin={true}></ToolsInShop>
       </Route>
       <Route exact path='/reports'>
-        <NavBar isAdmin={true}></NavBar>
+        <NavBar isAdmin={isAdmin}></NavBar>
         <Reports admin={true}></Reports>
       </Route>
       <Route exact path='/toolsonshopfloor'>
+        <NavBar isAdmin={isAdmin}></NavBar>
         <ToolsOnShopFloor></ToolsOnShopFloor>
+      </Route>
+      <Route exact path='/alerts'>
+        <NavBar isAdmin={isAdmin}></NavBar>
+        <p>Alert component</p>
       </Route>
     </div>
     </BrowserRouter>
