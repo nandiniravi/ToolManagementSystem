@@ -20,7 +20,7 @@ const ToolsOnShopFloor = (props) => {
             {showToolReqPopup
             ? <ChangeToolPopUp rowData={data.dummyData[1].data} onClickHandler={() => setShowToolReqPopup(false)} changePopUp={false}></ChangeToolPopUp>
             : null}
-            <h2 style={{textAlign: "center"}}>Tools On Shop Floor</h2>
+            <h2 style={{textAlign: "center"}}>Tools In Shop</h2>
             <button className='request-btn' onClick={(event)=> setShowToolReqPopup(true)}>Tool Requestition</button>
             <table className="table table-striped">
                 <thead>

@@ -22,6 +22,8 @@ const EditMasterdbPopup = (props) => {
         setShowLoader(true);
         
         const updatedToolDetails = {...toolDetails};
+        updatedToolDetails.toolNumber = toolNumber;
+        updatedToolDetails.toolName = toolName;
         updatedToolDetails.toolDescription = toolDescription;
         updatedToolDetails.toolLife = toolLife;
         updatedToolDetails.lastDrawnStock = lastDrawnStock;
@@ -88,7 +90,8 @@ const EditMasterdbPopup = (props) => {
                     onChange={event => setToolLife(event.target.value)}/>
                 </div>
 
-                <div><label>Last Drawn Stock:</label>
+                <div>
+                    <label>Last Drawn Stock:</label>
                     <input type='Number' 
                     min = '1'
                     value={lastDrawnStock}

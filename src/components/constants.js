@@ -8,20 +8,32 @@ const data = {
           {
             displayText : 'Alerts',
             link: '/alerts'
+          },
+          {
+            displayText : 'Logout',
+            link: '/home'
           }
         ],
         admin: [ 
           {
-            displayText : 'Tool Database',
+            displayText : 'Master Tool List',
             link: '/tooldatabase'
           },
           {
-            displayText : 'Tools in Shop',
-            link: '/toolsinshop'
+            displayText : 'Tools History',
+            link: '/toolshistory'
+          },
+          {
+            displayText : 'Tools In Shop',
+            link: '/toolsonshopfloor'
           },
           {
             displayText : 'Reports',
             link: '/reports'
+          },
+          {
+            displayText : 'Logout',
+            link: '/home'
           }
         ]
     },

@@ -5,7 +5,7 @@ import Footer from './components/Footer/Footer';
 import LoginForm from './components/LoginForm/LoginForm';
 import IndexPage from './components/IndexPage/IndexPage';
 import ToolMasterdb from './components/ToolMasterdb/ToolMasterdb';
-import ToolsInShop  from './components/ToolsInShop/ToolsInShop';
+import ToolsHistory  from './components/ToolsHistory/ToolsHistory';
 import Reports from './components/Reports/Reports';
 import NavBar from './components/NavBar/NavBar';
 import ToolsOnShopFloor from './components/ToolsOnShopFloor/ToolsOnShopFloor';
@@ -35,9 +35,9 @@ const App = () => {
         <NavBar isAdmin={isAdmin}></NavBar>
         <ToolMasterdb admin={true}></ToolMasterdb>
       </Route>
-      <Route exact path='/toolsinshop'>
+      <Route exact path='/toolshistory'>
         <NavBar isAdmin={isAdmin}></NavBar>
-        <ToolsInShop admin={true}></ToolsInShop>
+        <ToolsHistory admin={true}></ToolsHistory>
       </Route>
       <Route exact path='/reports'>
         <NavBar isAdmin={isAdmin}></NavBar>

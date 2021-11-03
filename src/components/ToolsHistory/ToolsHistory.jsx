@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import './ToolsInShop.scss';
+import './ToolsHistory.scss';
 import Loader from '../Loader/Loader';
 import moment from 'moment';
 
-const ToolsInShop = (props) => {
+const ToolsHistory = (props) => {
     const [data, setData] = useState();
     const [showLoader, setShowLoader] = useState(false);
     let keys = ['Request Id', 'Tool Number', 'Drawn Date', 'Disposed Date', 
@@ -38,7 +38,7 @@ const ToolsInShop = (props) => {
     const tableData = () => {
         return(
             <div className='master-data table-responsive'>
-            <h2 style={{textAlign: "center"}}>Tools In Shop</h2>
+            <h2 style={{textAlign: "center"}}>Tools History</h2>
             <table className="table table-striped">
                 <thead>
                 <tr>
@@ -81,4 +81,4 @@ const ToolsInShop = (props) => {
     );
 };
 
-export default ToolsInShop;
+export default ToolsHistory;

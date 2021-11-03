@@ -113,7 +113,7 @@ const ToolMasterdb = (props) => {
             {showDeletePopup 
                 ? <DeletePopUp></DeletePopUp>
                 : null}
-            <h2 style={{textAlign: "center"}}>Tools Master Data</h2>
+            <h2 style={{textAlign: "center"}}>Master Tool List</h2>
             <button className='add-row' onClick={() => addNewToolPopUp()}>Add New Tool  <i className="fa fa-plus-circle"></i></button>
             <table className="table table-striped">
                 <thead>
