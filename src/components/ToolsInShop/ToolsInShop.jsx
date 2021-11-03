@@ -51,7 +51,7 @@ const ToolsInShop = (props) => {
                     {data.map((each,index) => {
                         // console.log(each);
                         return(
-                            <tr key={each.toolNumber}>
+                            <tr key={each.index}>
                                 <td>{index + 1}</td>
                                 <td>{each.toolNumber}</td>
                                 <td>{moment(each.drawnDate).format('DD-MM-YYYY')}</td>
