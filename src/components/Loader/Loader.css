@@ -14,3 +14,39 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
+
+  @media only screen and (max-width: 1400px) {
+    .loader {
+      top: 30%;
+      left: 45%;
+    }
+  }
+    
+  @media only screen and (max-width: 1200px) {
+    .loader {
+      top: 30%;
+      left: 45%;
+    }
+  }
+  
+  @media only screen and (max-width: 992px) {
+    .loader {
+      top: 30%;
+      left: 45%;
+    }
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .loader {
+      top: 30%;
+      left: 45%;
+    }
+  }
+  
+  
+  @media only screen and (max-width: 570px) {
+    .loader {
+      top: 25%;
+      left: 35%;
+    }
+  }

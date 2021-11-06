@@ -4,11 +4,13 @@ import { Bar } from 'react-chartjs-2';
 // import chartData from '../constants';
 import './Chart.scss';
 import Loader from '../Loader/Loader';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 
 const Chart = (props) => {
   const [chartData, setChartData] = useState('');
   const [showLoader, setShowLoader] = useState(false);
+  const [showError, setShowError] = useState(false);
   const chartLabels = [];
   const chartToolData = [];
   let i;
@@ -32,7 +34,8 @@ const Chart = (props) => {
                 }
                 else{
                     setShowLoader(false);
-                    throw new Error('No data found');
+                    setShowError(true);
+                    // throw new Error('No data found');
                 }
             };
             fetchData();
@@ -99,6 +102,9 @@ const data = {
     return(
         <div style={{textAlign: "center"}}>
             {showLoader ? <Loader></Loader> : null}
+            {showError
+            ? <ErrorMessage message='No data found!'></ErrorMessage>
+            : null}
             <div className='header'>
                 <h3 className='title'>{props.graphData} - Monthly</h3>
             </div>

@@ -10,8 +10,6 @@
     text-decoration: none;
 }
 
-
-
 .card{
     padding: 2%;
     margin: 1% 0% 1% 0%;
@@ -25,4 +23,14 @@
 
 .card:hover{
     background-color: $secondary-color;
+}
+  
+@media only screen and (max-width: 570px) {
+    .index-page p{
+        font-size: 0.8rem;
+    }
+    .card{
+        margin: 2% 0% 2% 0%;
+        font-size: 0.8rem;
+    }
 }

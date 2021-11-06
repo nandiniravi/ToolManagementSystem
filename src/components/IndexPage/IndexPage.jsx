@@ -1,7 +1,6 @@
 import './IndexPage.scss';
 import data from '../constants';
 import {Link} from 'react-router-dom';
-import { useState, useEffect } from 'react';
 
 const IndexPage = (props) => {    
     return (

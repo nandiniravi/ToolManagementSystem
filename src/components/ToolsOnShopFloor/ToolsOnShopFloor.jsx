@@ -4,12 +4,14 @@ import './ToolsOnShopFloor.scss';
 // import data from '../constants';
 import ChangeToolPopUp from '../ChangeToolPopUp/ChangeToolPopUp';
 import Loader from '../Loader/Loader';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 const ToolsOnShopFloor = (props) => {
     const [data, setData] = useState();
     const [showLoader, setShowLoader] = useState(false);
     const [changeToolDetails, setChangeToolDetails] = useState('');
     const [showChangeToolPopup, setChangeToolPopup] = useState(false);
+    const [showError, setShowError] = useState(false);
     let keys = ['Change Tool','S No.','Tool Number', 'Machine Name', 'Changed On', 
     'Changed By', 'Units Worked Upon', 'Remaining Tool Life', 'Remaining Stock'];
 
@@ -39,7 +41,8 @@ const ToolsOnShopFloor = (props) => {
                 }
                 else{
                     setShowLoader(false);
-                    throw new Error('No data found');
+                    setShowError(true);
+                    // throw new Error('No data found');
                 }
             };
             fetchData();
@@ -50,6 +53,9 @@ const ToolsOnShopFloor = (props) => {
             <div className='tools-shopfloor table-responsive'>
             { showChangeToolPopup 
             ? <ChangeToolPopUp toolDetails={changeToolDetails} changeTool={true} onClickHandler={() => setChangeToolPopup(false)}></ChangeToolPopUp>
+            : null}
+            {showError
+            ? <ErrorMessage message='No data found'></ErrorMessage>
             : null}
             <h2 style={{textAlign: "center"}}>Tools In Shop</h2>
             <table className="table table-striped">

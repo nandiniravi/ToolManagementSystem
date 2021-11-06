@@ -21,4 +21,16 @@ a.active{
     color: $text-color;
     background-color: $tertiary-color;
  }
+  
+    
+@media only screen and (max-width: 570px) {
+    .nav-bar{
+        display: flex;
+        flex-direction: row;
+        font-size: 0.6rem;
+        padding: 1%;
+        background-color: $secondary-color;
+        overflow: hidden;
+    }
+}
 

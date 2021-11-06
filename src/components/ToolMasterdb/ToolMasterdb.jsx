@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './ToolMasterdb.scss';
 import Loader from '../Loader/Loader';
 import EditMasterdbPopup from '../EditMasterdbPopup/EditMasterdbPopup';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 const ToolMasterdb = (props) => {
     const [showEditPopup, setShowEditPopup] = useState(false);
@@ -9,6 +10,7 @@ const ToolMasterdb = (props) => {
     const [data, setData] = useState('');
     const [showLoader, setShowLoader] = useState(false);
     const [deleteToolId, setDeleteToolId] = useState('');
+    const [showError, setShowError] = useState(false);
     let keys = [
         'ToolNumber', 'ToolName', 'ToolDescription', 'ToolLife', 'LastDrawnStock', 'RemainingStock', 'OrderLeadTime', 'CriticalParameterMeasure', 'CriticalParameterMeasureUnit'
     ];
@@ -33,7 +35,8 @@ const ToolMasterdb = (props) => {
                 }
                 else{
                     setShowLoader(false);
-                    throw new Error('No data found');
+                    setShowError(true);
+                    // throw new Error('No data found');
                 }
             };
             fetchData();
@@ -83,7 +86,8 @@ const ToolMasterdb = (props) => {
             console.log('Deletion successful!');
         }
         else{
-            throw new Error('Something went wrong');
+            setShowError(true);
+            //throw new Error('Something went wrong');
         }
         setShowLoader(false);
         setShowDeletePopup(false);
@@ -113,6 +117,9 @@ const ToolMasterdb = (props) => {
             {showDeletePopup 
                 ? <DeletePopUp></DeletePopUp>
                 : null}
+             {showError
+            ? <ErrorMessage message='Server Error'></ErrorMessage>
+            : null}
             <h2 style={{textAlign: "center"}}>Master Tool List</h2>
             <button className='add-row' onClick={() => addNewToolPopUp()}>Add New Tool  <i className="fa fa-plus-circle"></i></button>
             <table className="table table-striped">
