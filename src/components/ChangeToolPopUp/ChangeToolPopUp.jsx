@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './ChangeToolPopUp.scss';
 import Loader from '../Loader/Loader';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 const ChangeToolPopUp = (props) => {
     const toolDetails = props.toolDetails[0];
@@ -11,6 +12,7 @@ const ChangeToolPopUp = (props) => {
     const [resonForChange, setReasonForChange] = useState('');
     const [comments, setComments] = useState('');
     const [showLoader, setShowLoader] = useState(false);
+    const [showError, setShowError] = useState(false);
 
     const saveChanges = async (event) => {
         event.preventDefault();
@@ -35,7 +37,8 @@ const ChangeToolPopUp = (props) => {
             setShowLoader(false);
         }
         else{
-            throw new Error('Changes not saved!');
+            setShowError(true);
+            // throw new Error('Changes not saved!');
         }    
         props.onClickHandler();
     }
@@ -50,6 +53,9 @@ const ChangeToolPopUp = (props) => {
         <div className='changetool-popup'>
             {showLoader
             ? <Loader></Loader>
+            : null}
+            {showError
+            ? <ErrorMessage message='Server Error'></ErrorMessage>
             : null}
             <p>Tool details:</p>
             <form>

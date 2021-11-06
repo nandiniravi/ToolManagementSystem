@@ -69,12 +69,12 @@ thead tr{
     top: 52%;
     left: 35%;
     width: 30%;
-    padding: 2.5%;
+    padding: 4%;
     text-align: center;
     border: 2px solid $primary-color;
     border-radius: 20px;
     background-color: $text-color;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 }
 
 .delete-popup button{
@@ -94,4 +94,63 @@ thead tr{
     background-color: $tertiary-color;
     color: $text-color;
     padding: 8px;
+}
+
+@media only screen and (max-width: 1400px) {
+    .delete-popup{
+        top: 34%;
+        left: 28%;
+        width: 44%;
+        font-size: 0.8rem;
+        padding: 4%;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .delete-popup{
+        top: 34%;
+        left: 28%;
+        width: 44%;
+        font-size: 0.8rem;
+        padding: 4%;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .delete-popup{
+        top: 35%;
+        left: 28%;
+        width: 44%;
+        font-size: 0.8rem;
+        padding: 4%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .delete-popup{
+        top: 35%;
+        left: 15%;
+        width: 70%;
+        font-size: 0.8rem;
+        padding: 4%;
+    }
+}
+    
+
+@media only screen and (max-width: 570px) {
+    table td{
+        font-size: 0.8rem;
+    }
+
+    .add-row{
+      font-size: 0.8rem;
+    }
+
+    .delete-popup{
+        top: 40%;
+        left: 10%;
+        width: 80%;
+        font-size: 0.8rem;
+        padding: 10%;
+    }
 }

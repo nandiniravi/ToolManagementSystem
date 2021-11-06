@@ -2,14 +2,16 @@ import React, {useState, useEffect} from 'react';
 import './ToolsHistory.scss';
 import Loader from '../Loader/Loader';
 import moment from 'moment';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 const ToolsHistory = (props) => {
     const [data, setData] = useState();
     const [showLoader, setShowLoader] = useState(false);
+    const [showError, setShowError] = useState(false);
     let keys = ['Request Id', 'Tool Number', 'Drawn Date', 'Disposed Date', 
     'Disposed Reason', 'Tool Life (days)', 'Machine Used', 'Comments', 'Change in Operator ID', 'Change out Operator ID'];
 
-    const [editRowData, setEditRowData] = useState();
+    // const [editRowData, setEditRowData] = useState();
 
     useEffect(() => {
         setShowLoader(true);
@@ -29,7 +31,8 @@ const ToolsHistory = (props) => {
                 }
                 else{
                     setShowLoader(false);
-                    throw new Error('No data found');
+                    setShowError(true);
+                    // throw new Error('No data found');
                 }
             };
             fetchData();
@@ -39,6 +42,9 @@ const ToolsHistory = (props) => {
         return(
             <div className='master-data table-responsive'>
             <h2 style={{textAlign: "center"}}>Tools History</h2>
+            {showError
+            ? <ErrorMessage message='No data found'></ErrorMessage>
+            : null}
             <table className="table table-striped">
                 <thead>
                 <tr>

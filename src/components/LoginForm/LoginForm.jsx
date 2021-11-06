@@ -1,11 +1,9 @@
 import React from 'react';
-import {Redirect, useHistory} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import './LoginForm.scss';
 import { useState, useEffect } from 'react';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import Loader from '../Loader/Loader';
-
-// export const UserContext = React.createContext();
 
 const LoginForm = (props) => {
     const [userId, setUserId] = useState('');
@@ -15,9 +13,7 @@ const LoginForm = (props) => {
     const [userNameFromRes, setUserNameFromRes] = useState('');
     const [isAdmin, setIsAdmin] = useState(false);
     const [showErrorMsg, setShowErrorMsg] = useState(false);
-    const [sendRequest, setSendRequest] = useState(false);
-    const history = useHistory();
-    
+    const [sendRequest, setSendRequest] = useState(false);    
 
     useEffect(() => {
         async function fetchData(){
@@ -70,13 +66,8 @@ const LoginForm = (props) => {
         setSendRequest(true);       
     }
 
-    const navigateToIndexPage = () => {
-        history.push('/index');
-        
-    }
-
     return (
-        // <UserContext.Provider value={{userName: userNameFromRes, isAdmin: isAdmin}}>
+
         userAuthenticated 
         ? <Redirect to='/index'/>
         : <div className='login-form'>
@@ -95,10 +86,9 @@ const LoginForm = (props) => {
                     onChange={(event) => setPassword(event.target.value)}/><br/><br/><br/>
                     <button onClick={(event) => submitForm(event)}>Login</button>
                 </form>
-                {showErrorMsg ? <ErrorMessage></ErrorMessage> : null}
+                {showErrorMsg ? <ErrorMessage message="Invalid credentials. Please try again"></ErrorMessage> : null}
             </div>
         </div>
-        // </UserContext.Provider>
     );
 }
 

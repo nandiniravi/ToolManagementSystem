@@ -1,9 +1,9 @@
 import './ErrorMessage.scss';
 
-const ErrorMessage = () => {
+const ErrorMessage = (props) => {
     return (
         <div className='error-message'>
-            <i className="fa fa-warning"></i>Invalid credentials. Please try again</div>
+            <i className="fa fa-warning"></i>{props.message}</div>
     );
 }
 

@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import './EditMasterdbPopup.scss';
 import Loader from '../Loader/Loader';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
+
 
 const EditMasterdbPopup = (props) => {
     let toolDetails = props.rowData[0];
 
     const [showLoader, setShowLoader] = useState(false);
+    const [showError, setShowError] = useState(false);
     
     const [toolNumber, setToolNumber] = useState(toolDetails.toolNumber);
     const [toolName, setToolName] = useState(toolDetails.toolName);
@@ -45,7 +48,8 @@ const EditMasterdbPopup = (props) => {
             console.log('Changes saved successfully');
         }
         else{
-            throw new Error('Changes not saved!');
+            setShowError(true);
+            //throw new Error('Changes not saved!');
         }    
         setShowLoader(false);
         props.onClickHandler();
@@ -59,6 +63,12 @@ const EditMasterdbPopup = (props) => {
 
     return (
         <div className='edit-popup'>
+            {showLoader 
+            ? <Loader></Loader>
+            : null}
+            {showError
+            ? <ErrorMessage message='Changes not saved! Server Error.'></ErrorMessage>
+            : null}
             <p>Tool details:</p>
             <form>
                 <div>

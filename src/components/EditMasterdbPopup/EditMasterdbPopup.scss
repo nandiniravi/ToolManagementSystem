@@ -47,3 +47,29 @@
     color: $text-color;
     outline: none;
 }
+
+@media only screen and (max-width: 768px) {
+    .edit-popup button{
+        width: 30%;
+    }
+    
+}
+
+@media only screen and (max-width: 570px) {
+    .edit-popup{
+        top: 30%;
+        left: 5%;
+        width: 90%;
+        font-size: 0.8rem;
+        padding: 6%;
+    }
+
+    .edit-popup div{
+        margin: 1% 0% 1% 0%;
+    }
+
+    .edit-popup button{
+        width: 30%;
+    }
+    
+}

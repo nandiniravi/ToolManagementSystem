@@ -60,3 +60,9 @@ h2{
     font-size: 1.1rem;
     cursor: pointer;
 }
+
+@media only screen and (max-width: 570px) {
+    table td{
+        font-size: 0.8rem;
+    }
+}
