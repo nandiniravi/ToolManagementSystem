@@ -55,8 +55,8 @@ const LoginForm = (props) => {
             }
                 
             setShowLoader(false);
-            setUserId('');
-            setPassword('');
+            // setUserId('');
+            // setPassword('');
             setSendRequest(false);
             }
         }
