@@ -9,6 +9,8 @@ import ToolsHistory  from './components/ToolsHistory/ToolsHistory';
 import Reports from './components/Reports/Reports';
 import NavBar from './components/NavBar/NavBar';
 import ToolsOnShopFloor from './components/ToolsOnShopFloor/ToolsOnShopFloor';
+import AlertsTable from './components/AlertsTable/AlertsTable';
+
 import { useState } from 'react';
 
 const App = () => {
@@ -49,7 +51,7 @@ const App = () => {
       </Route>
       <Route exact path='/alerts'>
         <NavBar isAdmin={isAdmin}></NavBar>
-        <p>Alert component</p>
+        <AlertsTable></AlertsTable>
       </Route>
     </div>
     </BrowserRouter>

@@ -1,0 +1,97 @@
+@import '../style.scss';
+
+.master-data{
+    padding: 2% 0% 1% 0%;
+}
+
+.master-data span{
+    margin: 0% 0% 1% 1%;
+    
+}
+
+.navigation{
+    display: inline-block;
+    width: 150px;
+    margin: 0% 3% 0% 0%;
+    padding: 1%;
+    color: $tertiary-color;
+    text-decoration: none;
+    border: 1px solid $tertiary-color;
+    border-radius: 20px;
+    text-align: center;
+}
+
+a.navigation:hover{
+    box-shadow: 1px 1px 2px 2px #ccc;
+    background-color: $secondary-color;
+    color: $text-color;
+    border: 1px solid $text-color;
+}
+
+table {
+    margin: 1% 0% 0% 1%;
+    font-size: 0.9rem;
+    overflow-x: scroll;
+    overflow-y: scroll;
+}
+
+h2{
+    font-family: 'Barlow Condensed', sans-serif;
+    color: #222;
+}
+
+// .table-striped > tbody > tr:nth-child(odd) > td{
+//     background-color: #fce4bb;
+//  }
+
+td{
+    border: 1px solid $form-border-color;
+    padding: 0.5%;
+    width: 2%;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 0.9rem;
+}
+
+thead tr{
+    background-color: $primary-color;
+    color: $text-color;
+}
+
+.icon{
+    margin: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.delete-popup{
+    position: absolute;
+    top: 52%;
+    left: 35%;
+    width: 30%;
+    padding: 2.5%;
+    text-align: center;
+    border: 2px solid $primary-color;
+    border-radius: 20px;
+    background-color: $text-color;
+    font-size: 0.9rem;
+}
+
+.delete-popup button{
+    width: 100px;
+    padding: 0.8%;
+    margin: 0.5% 1% 0% 1%;
+    border: 1px solid $form-border-color;
+    border-radius: 10px;
+    background-color: $primary-color;
+    color: $text-color;
+    outline: none;
+}
+
+.add-row{
+    margin: 1% 0% 0% 1%;
+    border: 1px solid #fff;
+    background-color: $tertiary-color;
+    color: $text-color;
+    padding: 8px;
+}
