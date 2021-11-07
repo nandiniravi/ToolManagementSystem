@@ -42,13 +42,16 @@ const App = () => {
         if(Number(json.count) > 0){
           setShowNotification(true);
         }
+        if(Number(json.count) === 0){
+          setShowNotification(false);
+        }
     };
 
     
 };
 
 useEffect(() => {
-  setInterval(getNotificationCount, 20000);
+  setInterval(getNotificationCount, 10000);
 },[]);
 
 

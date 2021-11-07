@@ -137,7 +137,7 @@ const Chart = (props) => {
       {showError
             ? <ErrorMessage message='No data found.'></ErrorMessage>
             : null}
-      <div className='header'>
+      <div className='chart-title'>
         <h3 className='title'>{props.graphData} - Monthly</h3>
       </div>
       {chartData !== '' ? <Bar data={data} options={options} /> : null}

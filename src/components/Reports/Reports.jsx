@@ -1,4 +1,5 @@
 import Chart from '../Chart/Chart';
+import './Reports.scss';
 
 const Reports = (props) => {
     return (
