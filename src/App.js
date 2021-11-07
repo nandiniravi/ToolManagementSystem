@@ -1,4 +1,4 @@
-import {BrowserRouter, Route} from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
@@ -12,7 +12,7 @@ import ToolsOnShopFloor from './components/ToolsOnShopFloor/ToolsOnShopFloor';
 import AlertsTable from './components/AlertsTable/AlertsTable';
 import Notification from './components/Notification/Notification';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const App = () => {
   const [userName, setUserName] = useState(localStorage.getItem('userName'));
@@ -25,7 +25,7 @@ const App = () => {
   
   //for showing alert notification
   const [showNotification, setShowNotification] = useState(false);
-  const [numOfAlert, setNumOfAlerts] = useState(5);
+  const [numOfAlert, setNumOfAlerts] = useState(0);
 
   const getNotificationCount = async() => {
     const response = await fetch('https://ddp8ypl7va.execute-api.ap-south-1.amazonaws.com/DEV/Tms/GetNotifications',{
