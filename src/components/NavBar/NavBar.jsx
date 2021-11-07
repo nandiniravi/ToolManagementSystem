@@ -18,21 +18,21 @@ const NavBar = (props) => {
             {(props.isAdmin == true) && (props.isAdmin !== false)
             ? adminOptions.map(each => {
                 if(each.title === 'Logout'){
-                return <NavLink to={each.link} key={each.displayText} onClick={(event) => logout(event)}>
+                return <NavLink to={each.link} exact key={each.displayText} onClick={(event) => logout(event)}>
                     {each.displayText}
                 </NavLink>}
                 else{
-                    return <NavLink to={each.link} key={each.displayText}>
+                    return <NavLink to={each.link} exact key={each.displayText}>
                     {each.displayText}
                 </NavLink>}
                 })
             : mechanicOptions.map(each => {
                 if(each.displayText === 'Logout'){
-                    return <NavLink to={each.link} key={each.displayText} onClick={(event) => logout(event)}>
+                    return <NavLink to={each.link} exact key={each.displayText} onClick={(event) => logout(event)}>
                         {each.displayText}
                     </NavLink>}
                 else{
-                    return <NavLink to={each.link} key={each.displayText}>
+                    return <NavLink to={each.link} exact key={each.displayText}>
                     {each.displayText}
                 </NavLink>}
             })

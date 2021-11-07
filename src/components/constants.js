@@ -11,7 +11,7 @@ const data = {
           },
           {
             displayText : 'Logout',
-            link: '/home'
+            link: '/'
           }
         ],
         admin: [ 
@@ -33,7 +33,7 @@ const data = {
           },
           {
             displayText : 'Logout',
-            link: '/home'
+            link: '/'
           }
         ]
     },

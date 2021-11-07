@@ -29,7 +29,7 @@ const App = () => {
     <BrowserRouter>
     <div className="container-fluid App">
       <Header></Header>
-      <Route exact path='/home'>
+      <Route exact path='/'>
         <LoginForm getUserDetailsHandler={(userDetails) => getUserDetails(userDetails)}></LoginForm>
         <Footer></Footer>
       </Route>
