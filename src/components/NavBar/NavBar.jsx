@@ -1,3 +1,4 @@
+import {useState} from 'react';
 import { NavLink } from "react-router-dom";
 import './NavBar.scss';
 import data from '../constants';
@@ -5,30 +6,16 @@ import data from '../constants';
 const adminOptions = data.indexPages['admin'];
 const mechanicOptions = data.indexPages['user'];
 
-
-// const adminOptions = [
-//     {title: 'Tools Masterlist', link: '/tooldatabase'}, 
-//     {title: 'Tools History', link: '/toolshistory'}, 
-//     {title: 'Reports', link: '/reports'},
-//     {title: 'Logout', link: '/home'}
-// ];
-// const mechanicOptions = [
-//     {title: 'Tool Life Monitor', link: '/toolsonshopfloor'}, 
-//     {title: 'Alert', link: '/alerts'}, 
-//     {title: 'Logout', link: '/home'}
-// ];
-
-// ['Tool Life Monitor', 'Alert', 'Logout'];
-
 const NavBar = (props) => {
 
     const logout = (event) => {
         localStorage.clear();
     }
+    console.log(typeof(props.isAdmin));
 
     return (
         <div className='nav-bar'>
-            {props.isAdmin 
+            {(props.isAdmin == true) && (props.isAdmin !== false)
             ? adminOptions.map(each => {
                 if(each.title === 'Logout'){
                 return <NavLink to={each.link} key={each.displayText} onClick={(event) => logout(event)}>

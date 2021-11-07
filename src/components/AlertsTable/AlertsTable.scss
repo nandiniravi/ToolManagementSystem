@@ -6,7 +6,7 @@
 
 .master-data span{
     margin: 0% 0% 1% 1%;
-    
+
 }
 
 .navigation{
@@ -94,4 +94,68 @@ thead tr{
     background-color: $tertiary-color;
     color: $text-color;
     padding: 8px;
+}
+
+.alert-box{
+    padding: 2%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.alert-container{
+    padding: 1% 0 1% 0%;
+    margin: 2%;
+    display: inline-block;
+    width: 25%;
+    border: 2px solid $primary-color;
+    background-color: $primary-color;
+    // border-radius: 20px;
+    box-shadow: 5px 5px 5px 5px #ccc;
+}
+
+.alert-container p{
+    color: $text-color;
+    padding-bottom: 2.5%;
+    padding-left: 3%;
+    text-align: left;
+    font-size: 0.9rem;
+    // border-bottom: 1px solid $primary-color;
+}
+
+.alert-container h3{
+    color: $text-color;
+    padding-top: 3.5%;
+    text-align: center;
+    font-size: 3rem;
+}
+
+@media only screen and (max-width: 570px) {
+    .alert-box{
+        padding: 2%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+    
+    .alert-container{
+        padding: 1% 0 1% 0%;
+        margin: 2% 10% 2% 10%;
+        display: inline-block;
+        width: 80%;
+        border: 2px solid $primary-color;
+        background-color: $primary-color;
+        // border-radius: 20px;
+        box-shadow: 5px 5px 5px 5px #ccc;
+    }
+    
+    .alert-container p{
+        color: $text-color;
+        padding-bottom: 2.5%;
+        padding-left: 3%;
+        text-align: left;
+        font-size: 0.7rem;
+        // border-bottom: 1px solid $primary-color;
+    }   
+    
 }

@@ -22,6 +22,9 @@ const App = () => {
     setIsAdmin(userDetails.isAdmin);
   }
 
+  console.log('isAdmin: ',isAdmin);
+  console.log('isAdmin: ',typeof(isAdmin));
+
   return (
     <BrowserRouter>
     <div className="container-fluid App">
