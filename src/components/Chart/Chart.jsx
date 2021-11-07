@@ -120,7 +120,7 @@ const Chart = (props) => {
       yAxes: [
         {
           ticks: {
-            beginAtZero: true,
+            beginAtZero: true
           },
         },
       ],

@@ -6,9 +6,9 @@ import moment from 'moment';
 const AlertsTable = (props) => {
     const [data, setData] = useState('');
     const [showLoader, setShowLoader] = useState(false);
-    const [avgAlerts, setAvgAlerts] = useState(10)
-    const [toolLifeAlerts, setToolLifeAlerts] = useState(20)
-    const [inventoryAlerts, setInventoryAlerts] = useState(30)
+    const [avgAlerts, setAvgAlerts] = useState(0)
+    const [toolLifeAlerts, setToolLifeAlerts] = useState(0)
+    const [inventoryAlerts, setInventoryAlerts] = useState(0)
 
     let keys = [
         'Alert Name','Description','Tool Number','Machine','Raised On','Status'

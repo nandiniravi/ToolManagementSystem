@@ -11,11 +11,11 @@ const Notification = (props) => {
             },
             body: JSON.stringify({userId:localStorage.getItem('userId')})
         });
-        const json = response.json();
-        if(json.ResponseCode === 0 && json.data.length > 0){
+        const json = await response.json();
+        if(json.ResponseCode === 0){
             console.log('Count has been reset');
+            props.showHandler(false);
         };
-        props.showHandler(false);
     };
 
     return (

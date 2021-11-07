@@ -12,7 +12,7 @@ import ToolsOnShopFloor from './components/ToolsOnShopFloor/ToolsOnShopFloor';
 import AlertsTable from './components/AlertsTable/AlertsTable';
 import Notification from './components/Notification/Notification';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const App = () => {
   const [userName, setUserName] = useState(localStorage.getItem('userName'));
@@ -35,17 +35,22 @@ const App = () => {
         },
         body: JSON.stringify({userId:localStorage.getItem('userId')})
     });
-    const json = response.json();
-    if(json.ResponseCode === 0 && json.data.length > 0){
-        setNumOfAlerts(json.data.count);
+    const json = await response.json();
+    if(json.ResponseCode === 0){
+        setNumOfAlerts(Number(json.count));
+        console.log(json.count);
+        if(Number(json.count) > 0){
+          setShowNotification(true);
+        }
     };
 
-    if(numOfAlert > 0){
-      setShowNotification(true);
-    }
+    
 };
 
-setInterval(getNotificationCount, 5000);
+useEffect(() => {
+  setInterval(getNotificationCount, 20000);
+},[]);
+
 
   return (
     <BrowserRouter>
