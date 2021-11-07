@@ -15,7 +15,7 @@ const NavBar = (props) => {
 
     return (
         <div className='nav-bar'>
-            {(props.isAdmin == true) && (props.isAdmin !== false)
+            {(props.isAdmin === 'true')
             ? adminOptions.map(each => {
                 if(each.title === 'Logout'){
                 return <NavLink to={each.link} exact key={each.displayText} onClick={(event) => logout(event)}>
