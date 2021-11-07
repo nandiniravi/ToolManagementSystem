@@ -2,6 +2,7 @@
 
 .tools-shopfloor{
     padding: 2% 0% 1% 0%;
+    margin-top: 1.5%;
 }
 
 .tools-shopfloor span{
@@ -78,6 +79,12 @@ thead tr{
     margin-left: 10px;
 }
 
+@media only screen and (max-width: 768px) {
+    .tools-shopfloor{
+        margin-top: 3.5%;
+    }
+}
+
 @media only screen and (max-width: 570px) {
     table td{
         font-size: 0.8rem;
@@ -85,6 +92,11 @@ thead tr{
 
     .tools-shopfloor button{
         font-size: 0.7rem;
+    }
+
+    .tools-shopfloor{
+        padding: 2% 0% 1% 0%;
+        margin-top: 12%;
     }
     
 }

@@ -1,10 +1,11 @@
 @import '../style.scss';
 
-.inshop-data{
+.history-data{
     padding: 2% 0% 1% 0%;
+    margin-top: 1.5%;
 }
 
-.inshop-data span{
+.history-data span{
     margin: 0% 0% 1% 1%;
     
 }
@@ -54,15 +55,30 @@ h2{
     color: #222;
 }
 
-
 .icon{
     margin: 10px;
     font-size: 1.1rem;
     cursor: pointer;
 }
 
+@media only screen and (max-width: 1200px) {
+    .history-data{
+        margin-top: 2.5%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .history-data{
+        margin-top: 2.5%;
+    }
+}
+
 @media only screen and (max-width: 570px) {
     table td{
         font-size: 0.8rem;
+    }
+
+    .history-data{
+        margin-top: 12%;
     }
 }

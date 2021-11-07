@@ -40,7 +40,7 @@ const ToolsHistory = (props) => {
 
     const tableData = () => {
         return(
-            <div className='master-data table-responsive'>
+            <div className='history-data table-responsive'>
             <h2 style={{textAlign: "center"}}>Tools History</h2>
             {showError
             ? <ErrorMessage message='No data found'></ErrorMessage>

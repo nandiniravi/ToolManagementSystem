@@ -98,6 +98,7 @@ thead tr{
 
 .alert-box{
     padding: 2%;
+    margin-top: 1.5%;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -128,6 +129,12 @@ thead tr{
     padding-top: 3.5%;
     text-align: center;
     font-size: 3rem;
+}
+
+@media only screen and (max-width: 768px) {
+    .alert-box{
+        margin-top: 6%;
+    }
 }
 
 @media only screen and (max-width: 570px) {

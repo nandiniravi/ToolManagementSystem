@@ -1,4 +1,30 @@
 .reports{
-    display: flexbox;
+    display: flex;
     flex-direction: column;
+    margin-top: 7.5%;
+}
+
+@media only screen and (max-width: 1400px) {
+    .reports{
+        margin-top: 12%;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .reports{
+        margin-top: 9%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .reports{
+        margin-top: 10%;
+    }
+}
+
+@media only screen and (max-width: 570px) {
+    .reports{
+        margin-top: 13.5%;
+    }
+    
 }
