@@ -7,13 +7,22 @@ import Loader from '../Loader/Loader';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 const ToolsOnShopFloor = (props) => {
+    const [isAdmin, setIsAdmin] = useState(localStorage.getItem('isAdmin'));
     const [data, setData] = useState();
     const [showLoader, setShowLoader] = useState(false);
     const [changeToolDetails, setChangeToolDetails] = useState('');
     const [showChangeToolPopup, setChangeToolPopup] = useState(false);
     const [showError, setShowError] = useState(false);
-    let keys = ['Change Tool','S No.','Tool Number', 'Machine Name', 'Changed On', 
+    let keys;
+    if(String(isAdmin) === 'true'){
+        keys = ['S No.','Tool Number', 'Machine Name', 'Changed On', 
     'Changed By', 'Units Worked Upon', 'Remaining Tool Life', 'Remaining Stock'];
+    }
+    else{
+        keys = ['Change Tool','S No.', 'Machine Name', 'Tool Number', 'Changed On', 
+    'Changed By', 'Units Worked Upon', 'Remaining Tool Life', 'Remaining Stock'];
+    }
+    
 
     const showChangeToolPopUp = (event, toolNumber) => {
         event.preventDefault();
@@ -71,10 +80,17 @@ const ToolsOnShopFloor = (props) => {
                         // console.log(each);
                         return(
                             <tr key={index}>
-                                <td><button onClick={(event) => showChangeToolPopUp(event,each.tool_number)}>Change Tool</button></td>
+                                {String(isAdmin) === 'true'
+                                ? null
+                                : <td><button onClick={(event) => showChangeToolPopUp(event,each.tool_number)}>Change Tool</button></td>}
                                 <td>{index + 1}</td>
+                                {String(isAdmin) === 'true'
+                                ? null
+                                : <td>{each.machine_name}</td>}
                                 <td>{each.tool_number}</td>
-                                <td>{each.machine_name}</td>
+                                {String(isAdmin) === 'true'
+                                ? <td>{each.machine_name}</td>
+                                : null}
                                 <td>{each.changed_on}</td>
                                 <td>{each.changed_by}</td>
                                 <td>{each.units_worked_upon}</td>
