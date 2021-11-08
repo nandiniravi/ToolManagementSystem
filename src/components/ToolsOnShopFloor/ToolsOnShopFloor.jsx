@@ -25,9 +25,9 @@ const ToolsOnShopFloor = (props) => {
     }
     
 
-    const showChangeToolPopUp = (event, toolNumber) => {
+    const showChangeToolPopUp = (event, toolNumber, machine) => {
         event.preventDefault();
-        const toolToBeChanged = data.filter(each => each.tool_number === toolNumber);
+        const toolToBeChanged = data.filter(each => each.tool_number === toolNumber && each.machine_name === machine);
         setChangeToolDetails(toolToBeChanged);
         setChangeToolPopup(true);
     }
@@ -107,7 +107,7 @@ const ToolsOnShopFloor = (props) => {
                             <tr key={index}>
                                 {String(isAdmin) === 'true'
                                 ? null
-                                : <td><button onClick={(event) => showChangeToolPopUp(event,each.tool_number)}>Change Tool</button></td>}
+                                : <td><button onClick={(event) => showChangeToolPopUp(event, each.tool_number, each.machine_name )}>Change Tool</button></td>}
                                 <td>{index + 1}</td>
                                 {String(isAdmin) === 'true'
                                 ? null
