@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import {useState, useEffect} from 'react';
 import './ToolsOnShopFloor.scss';
 // import data from '../constants';
@@ -75,7 +76,7 @@ const ToolsOnShopFloor = (props) => {
                                 <td>{index + 1}</td>
                                 <td>{each.tool_number}</td>
                                 <td>{each.machine_name}</td>
-                                <td>{each.changed_on}</td>
+                                <td>{moment(each.changed_on).format('DD-MM-YYYY HH:mm')}</td>
                                 <td>{each.changed_by}</td>
                                 <td>{each.units_worked_upon}</td>
                                 <td>{each.rem_life}</td>
