@@ -16,14 +16,14 @@ const ToolsOnShopFloor = (props) => {
     const [showError, setShowError] = useState(false);
     let keys;
     if(String(isAdmin) === 'true'){
-        keys = ['S No.','Tool Number', 'Machine Name', 'Changed On', 
+        keys = ['S No.','Tool Number', 'Machine Name', 'Changed On',
     'Changed By', 'Units Worked Upon', 'Remaining Tool Life', 'Remaining Stock'];
     }
     else{
-        keys = ['Change Tool','S No.', 'Machine Name', 'Tool Number', 'Changed On', 
+        keys = ['Change Tool','S No.', 'Machine Name', 'Tool Number', 'Changed On',
     'Changed By', 'Units Worked Upon', 'Remaining Tool Life', 'Remaining Stock'];
     }
-    
+
 
     const showChangeToolPopUp = (event, toolNumber, machine) => {
         event.preventDefault();
@@ -41,11 +41,11 @@ const ToolsOnShopFloor = (props) => {
                 }
             });
             const json = await response.json();
-            
+
             if(json.ResponseCode === 0 && json.data.length > 0){
                 setShowLoader(false);
                 setData(json.data);
-                console.log(json.data);
+                // console.log(json.data);
             }
             else{
                 setShowLoader(false);
@@ -54,38 +54,40 @@ const ToolsOnShopFloor = (props) => {
             }
         };
 
-    setInterval(fetchData, 5000);
+    useEffect(() => {
+        setInterval(fetchData, 30000);
+    },[]);
 
-    // useEffect(() => {
-    //     setShowLoader(true);
-    //     async function fetchData(){
-    //         const response = await fetch('https://ddp8ypl7va.execute-api.ap-south-1.amazonaws.com/DEV/Tms/GetToolsInShop',
-    //             {
-    //                 method: 'POST',
-    //                 headers: {
-    //                     'Content-Type': 'application/json'
-    //                 }
-    //             });
-    //             const json = await response.json();
-                
-    //             if(json.ResponseCode === 0 && json.data.length > 0){
-    //                 setShowLoader(false);
-    //                 setData(json.data);
-    //                 console.log(json.data);
-    //             }
-    //             else{
-    //                 setShowLoader(false);
-    //                 setShowError(true);
-    //                 // throw new Error('No data found');
-    //             }
-    //         };
-    //         fetchData();
-    //     },[showChangeToolPopup]);
+    useEffect(() => {
+        setShowLoader(true);
+        async function fetchData(){
+            const response = await fetch('https://ddp8ypl7va.execute-api.ap-south-1.amazonaws.com/DEV/Tms/GetToolsInShop',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                const json = await response.json();
+
+                if(json.ResponseCode === 0 && json.data.length > 0){
+                    setShowLoader(false);
+                    setData(json.data);
+                    console.log(json.data);
+                }
+                else{
+                    setShowLoader(false);
+                    setShowError(true);
+                    // throw new Error('No data found');
+                }
+            };
+            fetchData();
+        },[showChangeToolPopup]);
 
     const tableData = () => {
         return(
             <div className='tools-shopfloor table-responsive'>
-            { showChangeToolPopup 
+            { showChangeToolPopup
             ? <ChangeToolPopUp toolDetails={changeToolDetails} changeTool={true} onClickHandler={() => setChangeToolPopup(false)}></ChangeToolPopUp>
             : null}
             {showError
@@ -129,11 +131,11 @@ const ToolsOnShopFloor = (props) => {
         </div>
         );
     };
-    
+
     return (
         <React.Fragment>
         {data ? tableData() : null}
-        {showLoader 
+        {showLoader
             ? <Loader></Loader>
             : null}
         </React.Fragment>
