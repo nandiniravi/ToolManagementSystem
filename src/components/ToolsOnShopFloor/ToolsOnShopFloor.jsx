@@ -89,11 +89,10 @@ const ToolsOnShopFloor = (props) => {
                                 ? null
                                 : <td>{each.machine_name}</td>}
                                 <td>{each.tool_number}</td>
-                                <td>{each.machine_name}</td>
-                                <td>{moment(each.changed_on).format('DD-MM-YYYY HH:mm')}</td>
                                 {String(isAdmin) === 'true'
                                 ? <td>{each.machine_name}</td>
                                 : null}
+                                <td>{moment(each.changed_on).format('DD-MM-YYYY HH:mm')}</td>
                                 <td>{each.changed_by}</td>
                                 <td>{each.units_worked_upon}</td>
                                 <td>{each.rem_life}</td>
