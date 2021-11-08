@@ -32,31 +32,55 @@ const ToolsOnShopFloor = (props) => {
         setChangeToolPopup(true);
     }
 
-    useEffect(() => {
-        setShowLoader(true);
-        async function fetchData(){
-            const response = await fetch('https://ddp8ypl7va.execute-api.ap-south-1.amazonaws.com/DEV/Tms/GetToolsInShop',
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                });
-                const json = await response.json();
+    async function fetchData(){
+        const response = await fetch('https://ddp8ypl7va.execute-api.ap-south-1.amazonaws.com/DEV/Tms/GetToolsInShop',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const json = await response.json();
+            
+            if(json.ResponseCode === 0 && json.data.length > 0){
+                setShowLoader(false);
+                setData(json.data);
+                console.log(json.data);
+            }
+            else{
+                setShowLoader(false);
+                setShowError(true);
+                // throw new Error('No data found');
+            }
+        };
+
+    setInterval(fetchData, 5000);
+
+    // useEffect(() => {
+    //     setShowLoader(true);
+    //     async function fetchData(){
+    //         const response = await fetch('https://ddp8ypl7va.execute-api.ap-south-1.amazonaws.com/DEV/Tms/GetToolsInShop',
+    //             {
+    //                 method: 'POST',
+    //                 headers: {
+    //                     'Content-Type': 'application/json'
+    //                 }
+    //             });
+    //             const json = await response.json();
                 
-                if(json.ResponseCode === 0 && json.data.length > 0){
-                    setShowLoader(false);
-                    setData(json.data);
-                    console.log(json.data);
-                }
-                else{
-                    setShowLoader(false);
-                    setShowError(true);
-                    // throw new Error('No data found');
-                }
-            };
-            fetchData();
-        },[showChangeToolPopup]);
+    //             if(json.ResponseCode === 0 && json.data.length > 0){
+    //                 setShowLoader(false);
+    //                 setData(json.data);
+    //                 console.log(json.data);
+    //             }
+    //             else{
+    //                 setShowLoader(false);
+    //                 setShowError(true);
+    //                 // throw new Error('No data found');
+    //             }
+    //         };
+    //         fetchData();
+    //     },[showChangeToolPopup]);
 
     const tableData = () => {
         return(
