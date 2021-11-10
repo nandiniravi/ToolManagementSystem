@@ -9,7 +9,7 @@ const ToolsHistory = (props) => {
     const [showLoader, setShowLoader] = useState(false);
     const [showError, setShowError] = useState(false);
     let keys = ['Request Id', 'Tool Number', 'Drawn Date', 'Disposed Date', 
-    'Disposed Reason', 'Tool Life (days)', 'Machine Used', 'Comments', 'Change in Operator ID', 'Change out Operator ID'];
+    'Disposed Reason', 'Tool Life', 'Machine Used', 'Comments', 'Change in Operator ID', 'Change out Operator ID'];
 
     // const [editRowData, setEditRowData] = useState();
 

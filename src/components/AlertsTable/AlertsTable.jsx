@@ -25,30 +25,13 @@ const AlertsTable = (props) => {
                     }
                 });
 
-            // const avgAlertsResponse = await fetch('https://ddp8ypl7va.execute-api.ap-south-1.amazonaws.com/DEV/Tms/GetAlerts',
-            // {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json'
-            //     }
-            // });
-
-            // const toolLifeAlertsResponse = await fetch('https://ddp8ypl7va.execute-api.ap-south-1.amazonaws.com/DEV/Tms/GetAlerts',
-            // {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json'
-            //     }
-            // });
-
-            // const inventoryAlertsResponse = await fetch('https://ddp8ypl7va.execute-api.ap-south-1.amazonaws.com/DEV/Tms/GetAlerts',
-            // {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json'
-            //     }
-            // });
-
+            const alertMetricsResponse = await fetch('https://ddp8ypl7va.execute-api.ap-south-1.amazonaws.com/DEV/Tms/GetAlertMetrics',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
 
             const json = await response.json();
             // console.log(json.data);
@@ -61,20 +44,12 @@ const AlertsTable = (props) => {
                 throw new Error('No data found');
             }
 
-            // const avgAlertsJson = await avgAlertsResponse.json();
-            // if(avgAlertsJson.ResponseCode === 0 && avgAlertsJson.data.length > 0){
-            //     setAvgAlerts(avgAlertsJson.data)
-            // }
-
-            // const toolLifeAlertsJson = await toolLifeAlertsResponse.json();
-            // if(toolLifeAlertsJson.ResponseCode === 0 && toolLifeAlertsJson.data.length > 0){
-            //     setToolLifeAlerts(toolLifeAlertsJson.data)
-            // }     
-
-            // const inventoryAlertsJson = await inventoryAlertsResponse.json();
-            // if(inventoryAlertsJson.ResponseCode === 0 && inventoryAlertsJson.data.length > 0){
-            //     setInventoryAlerts(inventoryAlertsJson.data)
-            // }     
+            const alertMetricsResponseJson = await alertMetricsResponse.json();
+            if(alertMetricsResponseJson.ResponseCode === 0){
+                setAvgAlerts(alertMetricsResponseJson.avgCount);
+                setToolLifeAlerts(alertMetricsResponseJson.toolLifeCount);
+                setInventoryAlerts(alertMetricsResponseJson.InventoryCount)
+            }
         };
         
         

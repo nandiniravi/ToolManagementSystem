@@ -44,24 +44,49 @@ const Chart = (props) => {
       'rgba(153, 0, 255, 0.4)',
     ],
     'Expected Tool Life': [
-      'rgba(153, 255, 255, 0.4)',
+      'rgba(153, 255, 255, 0.6)',
     ],
-    'Reached End of life':
-    [
-      'rgba(0, 255, 255, 0.4)',
-    ],
+    'End of Life':
+      [
+        'rgba(50, 255, 0, 0.4)',
+      ],
     'Change Over':
-    [
-      'rgba(153, 255, 0, 0.4)',
-    ],
+      [
+        'rgba(0, 255, 255, 0.4)',
+      ],
+    'Others':
+      [
+        'rgba(148,148,148, 0.4)',
+      ],
     'Tool Broken':
-    [
-      'rgba(153, 0, 255, 0.4)',
+      [
+        'rgba(255,148,148, 0.4)',
+      ],
+  }
+
+  let borderColors = {
+    'Actual tool life': [
+      'rgba(153, 0, 255,1)',
     ],
-    'Other':
-    [
-      'rgba(255, 255, 160, 0.4)',
+    'Expected Tool Life': [
+      'rgba(153, 255, 255,1)',
     ],
+    'End of Life':
+      [
+        'rgba(50, 255, 0,1)',
+      ],
+    'Change Over':
+      [
+        'rgba(0, 255, 255,1)',
+      ],
+    'Others':
+      [
+        'rgba(148,148,148,1)',
+      ],
+    'Tool Broken':
+      [
+        'rgba(255,148,148,1)',
+      ],
   }
   let chartBarData = {}
 
@@ -83,7 +108,7 @@ const Chart = (props) => {
       chartLabels = [...new Set(chartLabels)];
 
       let reasons = chartData.map(x => x.reason);
-      reasons = [...new Set(reasons)];
+      reasons = ['End of Life', 'Change Over', 'Tool Broken', 'Others'];
       for (let reason of reasons) {
         chartBarData[reason] = [];
       }
@@ -108,7 +133,7 @@ const Chart = (props) => {
           data: chartBarData[barKey],
           backgroundColor: bgcolor[barKey],
           borderColor: [
-            'rgba(153, 102, 255, 1)',
+            borderColors[barKey]
           ],
           borderWidth: 1,
         }
@@ -135,8 +160,8 @@ const Chart = (props) => {
     <div style={{ textAlign: "center" }}>
       {showLoader ? <Loader></Loader> : null}
       {showError
-            ? <ErrorMessage message='No data found.'></ErrorMessage>
-            : null}
+        ? <ErrorMessage message='No data found.'></ErrorMessage>
+        : null}
       <div className='chart-title'>
         <h3 className='title'>{props.graphData} - Monthly</h3>
       </div>
