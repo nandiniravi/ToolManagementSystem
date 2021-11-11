@@ -40,7 +40,7 @@ const Chart = (props) => {
     await fetchData();
   }, []);
   let bgcolor = {
-    'Actual tool life': [
+    'Average Actual tool life': [
       'rgba(153, 0, 255, 0.4)',
     ],
     'Expected Tool Life': [
@@ -65,7 +65,7 @@ const Chart = (props) => {
   }
 
   let borderColors = {
-    'Actual tool life': [
+    'Average Actual tool life': [
       'rgba(153, 0, 255,1)',
     ],
     'Expected Tool Life': [
@@ -94,10 +94,10 @@ const Chart = (props) => {
     datasets = [];
     chartLabels = [];
     if (props.graphData === 'Tool Life Tracking') {
-      chartBarData = { 'Actual tool life': [], 'Expected Tool Life': [] }
+      chartBarData = { 'Average Actual tool life': [], 'Expected Tool Life': [] }
       for (let i in chartData) {
         chartLabels.push(chartData[i].tool_number);
-        chartBarData['Actual tool life'].push(chartData[i].avg_tool_life);
+        chartBarData['Average Actual tool life'].push(chartData[i].avg_tool_life);
         chartBarData['Expected Tool Life'].push(chartData[i].tool_life);
       };
 
